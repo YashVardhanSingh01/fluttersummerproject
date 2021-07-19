@@ -117,27 +117,28 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        margin: EdgeInsets.only(top: 50),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Don\'t have an account?',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w500),
-                            ),
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                primary: Color(0xff2FC4B2),
-                                textStyle: TextStyle(
-                                  fontSize: 15,
-                                ),
+                      margin: EdgeInsets.only(top: 50),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Don\'t have an account?',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Color(0xff2FC4B2),
+                              textStyle: TextStyle(
+                                fontSize: 15,
                               ),
-                              onPressed: () {},
-                              child: Text('Register'),
                             ),
-                          ],
-                        ))
+                            onPressed: () {},
+                            child: Text('Register'),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ],

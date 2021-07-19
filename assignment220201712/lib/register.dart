@@ -105,6 +105,27 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Container(
+                        margin: EdgeInsets.only(top: 50),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Receive regular updates',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            // Switch(
+                            //   onChanged: (true)?true:,
+                            //   value: true,
+                            //   activeColor: Color(0XFF2FC4E2),
+                            //   activeTrackColor: Color(0XFFE3F2FD),
+                            //   inactiveThumbColor: Color(0xFF2FC4E2),
+                            //   inactiveTrackColor: Color(0xFFC2C4E2),
+                            // ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
