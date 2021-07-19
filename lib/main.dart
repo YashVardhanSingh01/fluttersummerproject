@@ -10,59 +10,85 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Layout Basics',
         home: Container(
+          padding: EdgeInsets.fromLTRB(16, 20, 16, 16),
           color: Colors.white,
           alignment: Alignment.topCenter,
           child: Column(
             children: [
-              Container(
-                color: Colors.amber,
-                height: 133.33,
-                width: 1200,
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
+                child: Container(
+                  color: Colors.amber,
+                  height: 100,
+                  width: 1000,
+                ),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Container(
-                  height: 133.33,
-                  width: 120,
+                  padding: EdgeInsets.all(16),
+                  height: 100,
+                  width: 100,
                   color: Colors.green,
                 ),
-                Container(
-                  height: 133.33,
-                  width: 120,
-                  color: Colors.red,
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.blueAccent,
+                  ),
                 ),
                 Container(
-                  height: 133.33,
-                  width: 120,
+                  padding: EdgeInsets.all(16),
+                  height: 100,
+                  width: 100,
                   color: Colors.green,
                 )
               ]),
-              Container(
-                color: Colors.blue,
-                height: 133.33,
-                width: 1200,
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
+                child: Container(
+                  color: Colors.blue,
+                  height: 100,
+                  width: 1200,
+                ),
               ),
-              Container(
-                color: Colors.black26,
-                height: 133.33,
-                width: 1200,
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
+                child: Container(
+                  color: Colors.black26,
+                  height: 100,
+                  width: 1200,
+                ),
               ),
               Row(children: [
-                Column(children: [
-                  Container(
-                    height: 133.33,
-                    width: 120,
-                    color: Colors.orangeAccent,
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 16, 16, 16),
+                        child: Container(
+                          height: 100,
+                          width: 100,
+                          color: Colors.orangeAccent,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 16, 16, 0),
+                        child: Container(
+                          height: 100,
+                          width: 100,
+                          color: Colors.brown,
+                        ),
+                      ),
+                    ]),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
+                  child: Container(
+                    height: 228,
+                    width: 228,
+                    color: Colors.green,
                   ),
-                  Container(
-                    height: 133.33,
-                    width: 120,
-                    color: Colors.brown,
-                  ),
-                ]),
-                Container(
-                  height: 266.66,
-                  width: 240,
-                  color: Colors.green,
                 ),
               ])
             ],
