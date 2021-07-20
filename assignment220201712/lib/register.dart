@@ -8,7 +8,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  String valueChoose = '';
+  List listItem = ["2020", "2019", "2018", "2017", "2016"];
+  int _grpvalue = 1;
   var _textController = new TextEditingController();
+  bool state = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 40),
             child: Column(
               children: [
                 Container(
@@ -104,13 +108,23 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: 300.0,
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton(
-                            value: Text(
-                              '2020',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                            items: [],
+                            hint: Text("Select year of admission"),
+                            icon: Icon(Icons.arrow_drop_down),
+                            isExpanded: true,
+                            value: valueChoose,
+                            onChanged: (newValue) {
+                              setState(
+                                () {
+                                  valueChoose = newValue;
+                                },
+                              );
+                            },
+                            items: listItem.map((valueItem) {
+                              return DropdownMenuItem(
+                                value: valueItem,
+                                child: Text(valueItem),
+                              );
+                            }).toList(),
                           ),
                         ),
                       ),
@@ -124,14 +138,19 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            // Switch(
-                            //   onChanged: (true)?true:,
-                            //   value: true,
-                            //   activeColor: Color(0XFF2FC4E2),
-                            //   activeTrackColor: Color(0XFFE3F2FD),
-                            //   inactiveThumbColor: Color(0xFF2FC4E2),
-                            //   inactiveTrackColor: Color(0xFFC2C4E2),
-                            // ),
+                            Switch(
+                              onChanged: (bool s) {
+                                setState(() {
+                                  state = s;
+                                  print(state);
+                                });
+                              },
+                              value: state,
+                              activeColor: Color(0XFF2FC4E2),
+                              activeTrackColor: Color(0XFFD3F2FD),
+                              inactiveThumbColor: Color(0xFF2FC4E2),
+                              inactiveTrackColor: Color(0xFFC2C4E2),
+                            ),
                           ],
                         ),
                       ),
@@ -150,8 +169,19 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             Row(
                               children: [
+                                Radio(
+                                  value: 1,
+                                  groupValue: _grpvalue,
+                                  onChanged: (value) {
+                                    setState(
+                                      () {
+                                        _grpvalue = 1;
+                                      },
+                                    );
+                                  },
+                                ),
                                 Container(
-                                  width: 150,
+                                  width: 100,
                                   child: Text(
                                     'Yes',
                                     style: TextStyle(
@@ -159,8 +189,17 @@ class _RegisterPageState extends State<RegisterPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
+                                Radio(
+                                  value: 2,
+                                  groupValue: _grpvalue,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _grpvalue = 2;
+                                    });
+                                  },
+                                ),
                                 Container(
-                                  width: 150,
+                                  width: 100,
                                   child: Text(
                                     'No',
                                     style: TextStyle(
