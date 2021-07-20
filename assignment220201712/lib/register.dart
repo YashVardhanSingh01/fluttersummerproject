@@ -8,8 +8,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String valueChoose = '';
-  List listItem = ["2020", "2019", "2018", "2017", "2016"];
+  String _chosenValue = '2020';
   int _grpvalue = 1;
   var _textController = new TextEditingController();
   bool state = false;
@@ -105,24 +104,34 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                       Container(
-                        width: 300.0,
+                        width: 800.0,
+                        padding: EdgeInsets.fromLTRB(10, 5, 5, 5),
+                        color: Color(0xffEBEBEB),
                         child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            hint: Text("Select year of admission"),
-                            icon: Icon(Icons.arrow_drop_down),
-                            isExpanded: true,
-                            value: valueChoose,
-                            onChanged: (newValue) {
-                              setState(
-                                () {
-                                  valueChoose = newValue;
-                                },
-                              );
+                          child: DropdownButton<String>(
+                            hint: Text('Please enter year of admission'),
+                            value: _chosenValue,
+                            icon: Icon(Icons.arrow_drop_down_sharp),
+                            iconSize: 20,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                            ),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _chosenValue = newValue!;
+                              });
                             },
-                            items: listItem.map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
+                            items: <String>[
+                              '2020',
+                              '2019',
+                              '2018',
+                              '2017',
+                              '2016'
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
                               );
                             }).toList(),
                           ),
