@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 69,
         backgroundColor: Color(0xff2FC4B2),
         centerTitle: true,
         title: Text(
