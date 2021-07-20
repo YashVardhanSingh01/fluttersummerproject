@@ -2,7 +2,13 @@ import 'package:assignment220201712/final.dart';
 import 'package:assignment220201712/register.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  var _textController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,6 +53,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         TextField(
+                          controller: _textController,
                           textAlign: TextAlign.left,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -97,10 +104,12 @@ class LoginPage extends StatelessWidget {
                         child: Builder(
                           builder: (context) => ElevatedButton(
                             onPressed: () {
+                              String textToSend = _textController.text;
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => FinalPage(),
+                                  builder: (context) =>
+                                      FinalPage(value: textToSend),
                                 ),
                               );
                             },
