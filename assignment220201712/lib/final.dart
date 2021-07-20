@@ -51,7 +51,7 @@ class _FinalPageState extends State<FinalPage> {
                     '${widget.value}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 50,
+                      fontSize: 40,
                       color: Color(0xff000000),
                     ),
                     textAlign: TextAlign.center,
