@@ -18,11 +18,17 @@ class _HomePageState extends State<HomePage> {
     return obtainedName;
   }
 
+  removeValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('name');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          removeValue();
           Navigator.push(
             context,
             MaterialPageRoute(
