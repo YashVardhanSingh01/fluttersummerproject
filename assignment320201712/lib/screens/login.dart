@@ -1,4 +1,3 @@
-import 'home.dart';
 import 'register.dart';
 import 'nav.dart';
 import 'package:flutter/material.dart';
@@ -135,10 +134,12 @@ class _LoginPageState extends State<LoginPage> {
                             child: Builder(
                               builder: (context) => ElevatedButton(
                                 onPressed: () async {
-                                  String textToSend = _nameController.text;
+                                  String nameToSend = _nameController.text;
+                                  String idToSend = _idController.text;
                                   SharedPreferences prefs =
                                       await SharedPreferences.getInstance();
-                                  prefs.setString('name', textToSend);
+                                  prefs.setString('name', nameToSend);
+                                  prefs.setString('id', idToSend);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

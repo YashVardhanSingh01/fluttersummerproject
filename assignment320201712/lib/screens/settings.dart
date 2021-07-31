@@ -1,4 +1,7 @@
+import 'package:assignment320201712/providers/diplay_name_or_id.dart';
+import 'package:assignment320201712/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -30,66 +33,74 @@ class _SettingsPageState extends State<SettingsPage> {
             padding: EdgeInsets.fromLTRB(20, 20, 20, 40),
             child: Container(
               margin: EdgeInsets.only(top: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 200,
-                    margin: EdgeInsets.only(left: 15),
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      'Your Home Bio',
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  Row(
+              child: Builder(
+                builder: (context) {
+                  final nmorid =
+                      Provider.of<SetNameOrID>(context, listen: false);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Radio(
-                        activeColor: Theme.of(context).primaryColor,
-                        value: 1,
-                        groupValue: _grpvalue,
-                        onChanged: (value) {
-                          setState(
-                            () {
-                              _grpvalue = 1;
+                      Container(
+                        width: 200,
+                        margin: EdgeInsets.only(left: 15),
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: Text(
+                          'Your Home Bio',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Theme.of(context).primaryColor,
+                            value: 1,
+                            groupValue: _grpvalue,
+                            onChanged: (value) {
+                              setState(
+                                () {
+                                  _grpvalue = 1;
+                                  nmorid.radValue(_grpvalue);
+                                },
+                              );
                             },
-                          );
-                        },
-                      ),
-                      Container(
-                        width: 100,
-                        child: Text(
-                          'Name',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
                           ),
-                        ),
-                      ),
-                      Radio(
-                        activeColor: Theme.of(context).primaryColor,
-                        value: 2,
-                        groupValue: _grpvalue,
-                        onChanged: (value) {
-                          setState(() {
-                            _grpvalue = 2;
-                          });
-                        },
-                      ),
-                      Container(
-                        width: 100,
-                        child: Text(
-                          'ID',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
+                          Container(
+                            width: 100,
+                            child: Text(
+                              'Name',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
                           ),
-                        ),
+                          Radio(
+                            activeColor: Theme.of(context).primaryColor,
+                            value: 2,
+                            groupValue: _grpvalue,
+                            onChanged: (value) {
+                              setState(() {
+                                _grpvalue = 2;
+                                nmorid.radValue(_grpvalue);
+                              });
+                            },
+                          ),
+                          Container(
+                            width: 100,
+                            child: Text(
+                              'ID',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),

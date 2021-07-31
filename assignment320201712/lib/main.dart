@@ -1,4 +1,5 @@
 import 'package:assignment320201712/providers/assignments_done_counter.dart';
+import 'package:assignment320201712/providers/diplay_name_or_id.dart';
 import 'package:assignment320201712/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +18,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<AssignmentCounter>(
-      create: (context) => AssignmentCounter(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AssignmentCounter>(
+          create: (context) => AssignmentCounter(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SetNameOrID(),
+        ),
+      ],
       child: Builder(
         builder: (context) {
           return MaterialApp(

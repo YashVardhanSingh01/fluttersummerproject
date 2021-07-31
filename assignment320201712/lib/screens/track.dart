@@ -1,7 +1,6 @@
 import 'package:assignment320201712/providers/assignments_done_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'login.dart';
 import 'home.dart';
 
 class TrackPage extends StatefulWidget {
@@ -66,7 +65,12 @@ class _TrackPageState extends State<TrackPage> {
                           ),
                           onChanged: (String? newValue) {
                             setState(() {
+                              // if (int.parse(_chosenValue) >=
+                              //     asgn.assignmentCounter)
                               _chosenValue = newValue!;
+                              // else
+                              //   _chosenValue =
+                              //       (asgn.assignmentCounter).toString();
                             });
                           },
                           items: <String>[

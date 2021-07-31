@@ -19,25 +19,6 @@ class _NavigationPageState extends State<NavigationPage> {
     HomePage(),
     SettingsPage(),
   ];
-  // @override
-  // void initState() {
-  //   getName().whenComplete(() async {
-
-  //   });
-  //   super.initState();
-  // }
-
-  Future getName() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var obtainedName = prefs.getString('name');
-    setState(() {
-      finalName = obtainedName.toString();
-      HomePage(
-        value: finalName,
-      );
-    });
-    print(finalName);
-  }
 
   @override
   Widget build(BuildContext context) {

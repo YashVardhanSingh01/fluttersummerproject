@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AssignmentCounter extends ChangeNotifier {
   int _assignmentCounter = 0;

@@ -1,25 +1,46 @@
+import 'package:assignment320201712/providers/diplay_name_or_id.dart';
 import 'package:assignment320201712/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
 import 'track.dart';
 
 class HomePage extends StatefulWidget {
-  final String value;
   final int counter;
   final int marks;
   final double percentage;
+  final int chosenval;
 
   HomePage(
       {Key? key,
-      this.value = '',
       this.counter = 0,
       this.marks = 0,
-      this.percentage = 0.0})
+      this.percentage = 0.0,
+      this.chosenval = 0})
       : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  String _value = '';
+  @override
+  void initState() {
+    super.initState();
+    _getName();
+  }
+
+  void _getName() async {
+    final prefs = await SharedPreferences.getInstance();
+    _value = (prefs.getString('name') ?? 0).toString();
+  }
+
+  void _getID() async {
+    final prefs = await SharedPreferences.getInstance();
+    _value = (prefs.getString('id') ?? 0).toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,14 +68,24 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.topLeft,
                   width: 800,
                   height: 70,
-                  child: Text(
-                    'Hi ${widget.value} !',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 28,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.left,
+                  child: Consumer<SetNameOrID>(
+                    builder: (context, nmoid, child) {
+                      int chosenval = nmoid.radvalue;
+                      if (chosenval == 1) {
+                        _getName();
+                      } else if (chosenval == 2) {
+                        _getID();
+                      }
+                      return Text(
+                        'Hi $_value !',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 28,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.left,
+                      );
+                    },
                   ),
                 ),
                 Stack(
