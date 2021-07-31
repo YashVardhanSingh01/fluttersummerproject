@@ -135,10 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                             child: Builder(
                               builder: (context) => ElevatedButton(
                                 onPressed: () async {
-                                  final prefs =
+                                  String textToSend = _nameController.text;
+                                  SharedPreferences prefs =
                                       await SharedPreferences.getInstance();
-                                  prefs.setString('name', _nameController.text);
-                                  // String textToSend = _nameController.text;
+                                  prefs.setString('name', textToSend);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

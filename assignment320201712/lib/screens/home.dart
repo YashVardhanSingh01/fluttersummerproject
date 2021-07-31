@@ -1,34 +1,30 @@
 import 'package:assignment320201712/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'track.dart';
 
 class HomePage extends StatefulWidget {
   final String value;
+  final int counter;
+  final int marks;
+  final double percentage;
 
-  HomePage({Key? key, this.value = ''}) : super(key: key);
+  HomePage(
+      {Key? key,
+      this.value = '',
+      this.counter = 0,
+      this.marks = 0,
+      this.percentage = 0.0})
+      : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  getName() async {
-    final prefs = await SharedPreferences.getInstance();
-    final obtainedName = prefs.getString('name') ?? 0;
-    return obtainedName;
-  }
-
-  removeValue() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('name');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          removeValue();
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -52,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                   width: 800,
                   height: 70,
                   child: Text(
-                    'Hi ${getName()} !',
+                    'Hi ${widget.value} !',
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 28,
@@ -86,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       bottom: 55,
                       left: 15,
                       child: Text(
-                        '2/6\nassignments done',
+                        '${widget.counter}/6\nassignments done',
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 20,
@@ -106,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            '50%',
+                            '${widget.percentage.toStringAsFixed(2)}%',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -149,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                '25',
+                                '${widget.marks}',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
